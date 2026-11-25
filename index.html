@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مِراس | من التعلّم إلى الاحتراف</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        :root {
+            --bg-main: #ffffff;
+            --bg-card: #ffffff;
+            --bg-soft: #f8fafc;
+            --bg-hover: #f1f5f9;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-glow: rgba(37, 99, 235, 0.12);
+            --accent-purple: #7c3aed;
+            --accent-green: #16a34a;
+            --accent-orange: #ea580c;
+            --accent-yellow: #ca8a04;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page-transition {
+            animation: slideFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes slideFadeIn {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 0 20px 0;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+            margin-bottom: 16px;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 780px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+        
+        /* Intro Banner */
+        .intro-banner {
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 22px 28px;
+            margin: 25px 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .intro-banner:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        .intro-icon {
+            font-size: 2.2rem;
+            background: var(--primary-glow);
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+        
+        /* Search */
+        .search-container {
+            margin: 20px auto 35px auto;
+            max-width: 620px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--bg-main);
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        .search-input::placeholder { color: var(--text-light); }
+        
+        /* Section Headers */
+        .section-header {
+            font-size: 1.6rem;
+            margin: 35px 0 12px 0;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 22px;
+        }
+        
+        /* Cards */
+        .card {
+            position: relative;
+            min-height: 310px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 22px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-sm);
+            background-color: var(--bg-card);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.92) 70%, rgba(255,255,255,0.98) 100%);
+            z-index: 1;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-content { position: relative; z-index: 2; }
+        .card-badge {
+            display: inline-block;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .card h3 { 
+            font-size: 1.3rem; 
+            font-weight: 800; 
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-btn {
+            background: var(--bg-soft);
+            color: var(--primary);
+            padding: 9px 18px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .card:hover .card-btn { 
+            background: var(--primary); 
+            color: #fff;
+            border-color: var(--primary);
+        }
+        
+        /* Detail Views */
+        .page-view { display: none; }
+        .back-btn {
+            background: var(--bg-main);
+            color: var(--text-main);
+            border: 1.5px solid var(--border-color);
+            padding: 11px 22px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-bottom: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .back-btn:hover { 
+            background: var(--primary); 
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .detail-hero {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hook-box {
+            background: var(--bg-soft);
+            border-right: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 18px 0;
+            line-height: 1.7;
+        }
+        .info-card {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 22px;
+            margin: 15px 0;
+        }
+        .info-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .text-body {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+        
+        /* Lists */
+        .req-list {
+            list-style: none;
+            padding-right: 0;
+        }
+        .req-list li {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+        .req-list li::before {
+            content: "✦";
+            position: absolute;
+            right: 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .tech-tag {
+            background: var(--primary-glow);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        /* Roadmap */
+        .roadmap-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .roadmap-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-top: 18px;
+            padding-bottom: 10px;
+        }
+        .roadmap-step {
+            background: var(--bg-soft);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.92rem;
+        }
+        .roadmap-arrow {
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 15px;
+        }
+        .project-card {
+            background: var(--bg-soft);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid var(--border-light);
+        }
+        .badge-beginner { background: rgba(22, 163, 74, 0.12); color: var(--accent-green); }
+        .badge-inter { background: rgba(202, 138, 4, 0.12); color: var(--accent-yellow); }
+        .badge-adv { background: rgba(220, 38, 38, 0.12); color: #dc2626; }
+        
+        /* Video - Responsive 9:16 for Shorts, 16:9 for regular */
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-top: 15px;
+            background: #000;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .video-container.vertical {
+            padding-bottom: 177.78%; /* 9:16 */
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .video-container.horizontal {
+            padding-bottom: 56.25%; /* 16:9 */
+        }
+        .video-container iframe {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0;
+        }
+        
+        /* Shorts Grid */
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-top: 20px;
+        }
+        .short-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Next Step */
+        .next-step-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .next-step-box h3 {
+            color: var(--accent-green);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        
+        /* Footer */
+        .footer-banner {
+            text-align: center;
+            padding: 40px 20px 10px 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.9;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-btn svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+        
+        /* Video Play Button */
+        .video-play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .video-play-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .intro-banner { flex-direction: column; text-align: center; }
+            .roadmap-flow { flex-direction: column; align-items: stretch; }
+            .roadmap-arrow { text-align: center; transform: rotate(90deg); }
+            .whatsapp-btn { width: 52px; height: 52px; bottom: 18px; left: 18px; }
+            .whatsapp-btn svg { width: 26px; height: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HOME VIEW -->
+        <div id="homeView" class="page-transition">
+            <header>
+                <h1>مِراس</h1>
+                <span class="hero-tag">من التعلّم إلى الاحتراف</span>
+                <p>
+                    محتار بعد التخرج تمشي في أي طريق؟<br>
+                    مِراس بيساعدك تفهم تخصصك الجامعي، وتتعرف على المجالات المهنية الممكن تمشي فيها، وتشوف المهارات والتقنيات والمشاريع البتحتاجها عشان تبدأ طريقك بصورة واضحة.
+                </p>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" 
+                    placeholder="🔍 ابحث عن تخصص، مجال، تقنية، أو لغة برمجة (سي شارب، بايثون، فالتر، شبكات...)" 
+                    oninput="handleSearch()">
+                </div>
+            </header>
+            
+            <!-- INTRO BANNER -->
+            <div class="intro-banner" onclick="openIntroPage()">
+                <div class="intro-icon">💡</div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 1.2rem; color: var(--primary); font-weight: 800;">
+                        جديد في البرمجة أو مقبل على الكلية؟ اضغط هنا!
+                    </h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">
+                        فهم مبسط لماهية البرمجة، كيف تجهز نفسك للكلية، وهل المجال مجالك، مع فيديوهات توضيحية.
+                    </p>
+                </div>
+                <div class="card-btn">دليل البداية الشامل ←</div>
+            </div>
+            
+            <div id="searchResultsSection" style="display: none; margin-bottom: 30px;">
+                <div class="section-header" style="color: var(--primary);">🔍 نتائج البحث:</div>
+                <div class="grid" id="searchResultsGrid"></div>
+            </div>
+            
+            <div id="mainContentGroup">
+                <div class="section-header">🎓 اختار تخصصك الجامعي</div>
+                <p class="section-desc">
+                    اختار تخصصك، وبعدها اكتشف المجالات المهنية الأقرب ليك والطريق البمشي بيك من الدراسة لسوق العمل.
+                </p>
+                <div class="grid" id="majorsGrid"></div>
+            </div>
+            
+            <div class="footer-banner">
+                تخصصك الجامعي بحدد نقطة البداية، لكن المجال البتمشي فيه والمهارات البتبنيها والمشاريع البتنفذها هي البتحدد طريقك المهني.<br>
+                <span style="color: var(--primary); font-size: 1.15rem; margin-top: 10px; display: inline-block; font-weight: 800;">
+                    اعرف طريقك.. وابدأ خطوتك
+                </span>
+            </div>
+        </div>
+        
+        <!-- INTRO PAGE -->
+        <div id="introPage" class="page-view">
+            <button class="back-btn" onclick="goHome()">← أرجع للرئيسية</button>
+            
+            <div class="detail-hero">
+                <h1 style="font-size: 2rem; margin-bottom: 12px; color: var(--primary);">
+                    🎓 كيف تجهز نفسك للبرمجة والجامعة من الصفر؟
+                </h1>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.9;">
+                    البرمجة ليست حظًا ولا طلاسم! البرمجة ببساطة هي إنك تعلم الكمبيوتر كيف يحل ليك مشكلة بأسلوب منطقي وخطوات مرتبة. التخصص الجامعي يمنحك الأساس الأكاديمي، بينما المجال المهني هو اختيارك العملي لتبني عليه مستقبلك.
+                </p>
+                
+                <h3 style="margin-top: 25px; color: var(--accent-purple); font-size: 1.2rem;">
+                    🎥 فيديو: نصائح مهمة قبل دخول كلية حاسبات أو مجال البرمجة
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 8px;">
+                    مقدمة ممتازة توضح الخريطة والطريقة الصحيحة للتجهيز:
+                </p>
+                <div class="video-container horizontal">
+                    <iframe src="https://www.youtube.com/embed/8zoGqWZXU7c" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <h2 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--primary);">⚡ فيديوهات توضيحية للمبتدئين:</h2>
+            <div class="shorts-grid">
+                <div class="short-card">
+                    <h4 style="margin-bottom: 10px; color: var(--primary); font-size: 1.1rem;">
+                        1️⃣ ما هي البرمجة؟ بكل بساطة
+                    </h4>
+                    <div class="video-container vertical">
+                        <iframe src="https://www.youtube.com/embed/oPAg__f8qdY" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="short-card">
+                    <h4 style="margin-bottom: 10px; color: var(--accent-green); font-size: 1.1rem;">
+                        2️⃣ سوق العمل والتجهيز البرمجي 💵
+                    </h4>
+                    <div class="video-container vertical">
+                        <iframe src="https://www.youtube.com/embed/UTiox5ULqrk" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MAJOR DETAIL VIEW -->
+        <div id="majorPage" class="page-view">
+            <button class="back-btn" onclick="goHome()">← أرجع لتخصصات الجامعة</button>
+            
+            <div class="detail-hero">
+                <span id="majorCode" class="card-badge"></span>
+                <h1 id="majorTitle" style="font-size: 2.2rem; margin-top: 8px; color: var(--text-main);"></h1>
+                <div id="majorFocus" class="hook-box"></div>
+                
+                <div class="info-card">
+                    <h4 style="color: var(--primary);">📘 ما هو التخصص؟</h4>
+                    <p id="majorOverview" class="text-body"></p>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-purple);">🎓 ماذا يدرس الطالب؟</h4>
+                    <p id="majorStudies" class="text-body"></p>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-green);">💼 ماذا يمكن أن يعمل الخريج؟</h4>
+                    <p id="majorCareers" class="text-body"></p>
+                </div>
+                <div class="info-card" style="border-color: rgba(124, 58, 237, 0.2);">
+                    <h4 style="color: var(--accent-purple);">💡 تنبيه مهم عن الانتقال للمجال المهني:</h4>
+                    <p class="text-body">
+                        التخصص الجامعي لا يعني الانحصار في وظيفة واحدة بمسماها الأكاديمي. التخصص يمنحك الأساس المتين، بينما اختيارك للمجال المهني وتحديد التقنيات التي تتقنها والمشاريع التي تبنيها بنفسك هو ما يحدد مسارك في سوق العمل.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="section-header">🛠️ المجالات المهنية الأقرب للتخصص:</div>
+            <p class="section-desc">هذه المجالات التي يمكنك احترافها والبدء فيها بناءً على هذا التخصص:</p>
+            <div class="grid" id="majorFieldsGrid"></div>
+        </div>
+        
+        <!-- FIELD DETAIL VIEW -->
+        <div id="fieldPage" class="page-view">
+            <button class="back-btn" onclick="goBackToMajor()">← أرجع للتخصص الجامعي</button>
+            
+            <div class="detail-hero">
+                <span id="fieldCategory" class="card-badge"></span>
+                <h1 id="fieldTitle" style="font-size: 2rem; margin-top: 8px; color: var(--text-main);"></h1>
+                <div id="fieldHook" class="hook-box"></div>
+                
+                <div class="info-card">
+                    <h4 style="color: var(--primary);">📖 1. ما هو المجال؟</h4>
+                    <p id="fieldDef" class="text-body"></p>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-purple);">💻 2. ماذا يفعل المتخصص؟</h4>
+                    <p id="fieldDaily" class="text-body"></p>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-green);">🏢 3. أين يعمل؟</h4>
+                    <p id="fieldJobs" class="text-body"></p>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-orange);">⚡ 4. المتطلبات والأساسيات:</h4>
+                    <ul id="fieldReqs" class="req-list"></ul>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--primary);">🧠 5. المهارات المطلوبة:</h4>
+                    <ul id="fieldSkills" class="req-list"></ul>
+                </div>
+                <div class="info-card">
+                    <h4 style="color: var(--accent-yellow);">🛠️ 6. لغات البرمجة والتقنيات والأدوات:</h4>
+                    <div id="fieldTechs" class="tech-tags"></div>
+                </div>
+            </div>
+            
+            <!-- ROADMAP -->
+            <div class="roadmap-container">
+                <h3 style="color: var(--accent-purple); font-size: 1.2rem;">🗺️ 7. خارطة الطريق (Roadmap)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">المسار الموصى به للتعلم خطوة بخطوة من البداية وحتى الاحتراف:</p>
+                <div id="fieldRoadmap" class="roadmap-flow"></div>
+            </div>
+            
+            <!-- PROJECTS -->
+            <div class="detail-hero">
+                <h3 style="color: var(--accent-green); font-size: 1.2rem; margin-bottom: 12px;">🚀 8. مشاريع للتطبيق العملي (3 مستويات):</h3>
+                <div id="fieldProjects" class="projects-grid"></div>
+            </div>
+            
+            <!-- AI SECTION -->
+            <div class="detail-hero" style="border-color: rgba(124, 58, 237, 0.2);">
+                <h3 style="color: var(--accent-purple); font-size: 1.2rem; margin-bottom: 10px;">🤖 9. كيف يغير الذكاء الاصطناعي هذا المجال؟</h3>
+                <p id="fieldAiText" class="text-body"></p>
+            </div>
+            
+            <!-- VIDEO INTRO -->
+            <div class="detail-hero">
+                <h3 style="color: var(--primary); font-size: 1.2rem;">🎥 10. فيديو مقدمة عن المجال:</h3>
+                <div id="fieldVideoContainer" class="video-container"></div>
+                <div id="fieldVideoExtra" style="margin-top: 18px;"></div>
+            </div>
+            
+            <!-- NEXT STEP -->
+            <div class="next-step-box">
+                <h3>📌 خطوتك التالية:</h3>
+                <p class="text-body" style="color: var(--text-main);">
+                    بعد ما عرفت فكرة المجال والمهارات المطلوبة والطريق المقترح، الخطوة الجاية هي تبدأ بالتعلم والتطبيق بصورة عملية.<br><br>
+                    ما محتاج تتعلم كل حاجة في يوم واحد.<br>
+                    ابدأ بالأساسيات، طبق بإيدك، نفذ مشاريع صغيرة، وبعدها طور مستواك خطوة بخطوة.<br><br>
+                    <strong>المهم ما تكون عارف الطريق وبس؛ المهم تبدأ تمشي فيه.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/" class="whatsapp-btn" target="_blank" aria-label="تواصل عبر واتساب">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+    
+    <script>
+        let currentMajorId = null;
+        
+        // Video mapping by field ID
+        const fieldVideos = {
+            frontend: {
+                videos: [
+                    { url: "https://youtube.com/shorts/o9e_irp-joY", type: "short", title: "الفيديو الأول - تطوير الواجهات الأمامية" },
+                    { url: "https://youtube.com/shorts/DJ_UQ4KPCTE", type: "short", title: "الفيديو الثاني - تطوير الواجهات الأمامية" }
+                ]
+            },
+            backend: {
+                videos: [
+                    { url: "https://youtube.com/shorts/rpf5HfStiok", type: "short", title: "تطوير الواجهات الخلفية (Backend)" }
+                ]
+            },
+            fullstack: {
+                videos: [
+                    { url: "https://youtube.com/shorts/zDsm8UzIl7Y", type: "short", title: "تطوير التطبيقات المتكاملة (Full Stack)" }
+                ]
+            },
+            mobile: {
+                videos: [
+                    { url: "https://youtu.be/lIT48549JkQ", type: "horizontal", title: "تطوير تطبيقات الموبايل (Mobile Development)" }
+                ]
+            },
+            qa: {
+                videos: [
+                    { url: "https://youtube.com/shorts/XBzFVek00GI", type: "short", title: "اختبار البرمجيات (Software Testing)" }
+                ]
+            },
+            cybersecurity: {
+                videos: [
+                    { url: "https://youtu.be/KNSWYT7kH8Y", type: "horizontal", title: "الأمن السيبراني (Cybersecurity)" }
+                ]
+            },
+            database: {
+                videos: [
+                    { url: "https://youtube.com/shorts/AVnlyxn-Al4", type: "short", title: "تطوير قواعد البيانات (Database Development)" }
+                ]
+            },
+            networking: {
+                videos: [
+                    { url: "https://youtube.com/shorts/LpdBGRBee7s", type: "short", title: "الشبكات (Networking)" }
+                ]
+            },
+            cloud: {
+                videos: [
+                    { url: "https://youtube.com/shorts/N2XguepnGqY", type: "short", title: "الحوسبة السحابية (Cloud Computing)" }
+                ]
+            },
+            sysadmin: {
+                videos: [
+                    { url: "https://youtube.com/shorts/PNVH1u9iON4", type: "short", title: "إدارة الأنظمة (Systems Administration)" }
+                ]
+            },
+            itsupport: {
+                videos: [
+                    { url: "https://youtu.be/l1s6gGOGKG8", type: "horizontal", title: "الدعم الفني (Technical Support)" }
+                ]
+            },
+            devops: {
+                videos: [
+                    { url: "https://youtube.com/shorts/kK62vIH1UPk", type: "short", title: "DevOps" }
+                ]
+            },
+            dataanalysis: {
+                videos: [
+                    { url: "https://youtube.com/shorts/gSXRxQfAEYs", type: "short", title: "تحليل البيانات (Data Analysis)" }
+                ]
+            },
+            businessanalysis: {
+                videos: [
+                    { url: "https://youtu.be/a37Rud5gjPM", type: "horizontal", title: "تحليل الأعمال (Business Analysis)" }
+                ]
+            },
+            systemsanalysis: {
+                videos: [
+                    { url: "https://youtube.com/shorts/or8NGGFiwVs", type: "short", title: "تحليل النظم (Systems Analysis)" }
+                ]
+            },
+            erp: {
+                videos: [
+                    { url: "https://youtu.be/GQ8tvQZtoOc", type: "horizontal", title: "تخطيط موارد المؤسسات (ERP)" }
+                ]
+            },
+            itpm: {
+                videos: [
+                    { url: "https://youtube.com/shorts/HwIaczfGhwM", type: "short", title: "إدارة مشاريع تقنية المعلومات (IT Project Management)" }
+                ]
+            },
+            machinelearning: {
+                videos: [
+                    { url: "https://youtube.com/shorts/12FDIoM1j0M", type: "short", title: "تعلم الآلة (Machine Learning)" }
+                ]
+            },
+            deeplearning: {
+                videos: [
+                    { url: "https://youtube.com/shorts/1sF-HCp2u2s", type: "short", title: "التعلم العميق (Deep Learning)" }
+                ]
+            },
+            datascience: {
+                videos: [
+                    { url: "https://youtube.com/shorts/v76MtxtxEyo", type: "short", title: "علم البيانات (Data Science)" }
+                ]
+            },
+            computervision: {
+                videos: [
+                    { url: "https://youtube.com/shorts/It5PEMz2-oM", type: "short", title: "الرؤية الحاسوبية (Computer Vision)" }
+                ]
+            },
+            nlp: {
+                videos: [
+                    { url: "https://youtube.com/shorts/hHmrQkS6cMY", type: "short", title: "معالجة اللغة الطبيعية (NLP)" }
+                ]
+            },
+            genai: {
+                videos: [
+                    { url: "https://youtube.com/shorts/GezA5gogVTU", type: "short", title: "الذكاء الاصطناعي التوليدي (Generative AI)" }
+                ]
+            },
+            aiengineering: {
+                videos: [
+                    { url: "https://youtube.com/shorts/okdSqGrr4x4", type: "short", title: "هندسة الذكاء الاصطناعي (AI Engineering)" }
+                ]
+            }
+        };
+        
+        // Majors Data
+        const majors = {
+            SE: {
+                code: "Software Engineering",
+                title: "هندسة البرمجيات",
+                image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+                hook: "لو داير تعرف كيف البرامج الكبيرة بتتبني من مجرد فكرة لحد ما تصل لمستخدمين حقيقيين، فهندسة البرمجيات بتديك الأساس لفهم دورة بناء النظام كاملة من تحليل المشكلة والتصميم والبرمجة لحد الاختبار والنشر والصيانة.",
+                overview: "هندسة البرمجيات بتركز على بناء البرامج والأنظمة بطريقة منظمة وقابلة للتطوير والصيانة. الطالب ما بتعلم البرمجة بس، بل بتعلم كيف يفهم المشكلة، يحلل المتطلبات، يصمم النظام، يكتب الكود، يختبره، ينشره ويحافظ عليه مع مرور الوقت.",
+                studies: "البرمجة، البرمجة كائنية التوجه، هياكل البيانات والخوارزميات، قواعد البيانات، هندسة المتطلبات، تصميم البرمجيات، هندسة البرمجيات، اختبار البرمجيات، أمن البرمجيات، تصميم الأنظمة وإدارة دورة حياة البرمجيات.",
+                careers: "خريج هندسة البرمجيات عنده مسارات متعددة، منها تطوير الخوادم، تطوير الواجهات، تطوير التطبيقات المتكاملة، تطوير تطبيقات الهاتف، اختبار البرمجيات وضمان الجودة، هندسة البرمجيات المعمارية، والتطوير والتشغيل.",
+                fields: ["backend", "frontend", "fullstack", "mobile", "qa", "devops"]
+            },
+            CS: {
+                code: "Computer Science",
+                title: "علوم الحاسوب",
+                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+                hook: "لو داير تفهم كيف الكمبيوتر بيحل المشكلات، وكيف الخوارزميات والبيانات بتخلي الأنظمة قادرة تتعامل مع مسائل معقدة، فعلوم الحاسوب بتديك الأساس العلمي الواسع البتقدر تبني فوقو مجالك المهني.",
+                overview: "علوم الحاسوب بتركز على أساسيات الحوسبة والبرمجة والخوارزميات والبيانات وطريقة حل المشكلات باستخدام الحاسوب. التخصص بدي الطالب أساسًا قويًا يفتح ليه أكثر من مسار مهني.",
+                studies: "البرمجة، هياكل البيانات، الخوارزميات، قواعد البيانات، أنظمة التشغيل، الشبكات، الذكاء الاصطناعي، الرياضيات الحاسوبية، حل المشكلات وتصميم الخوارزميات.",
+                careers: "خريج علوم الحاسوب ممكن يتجه لمجالات متعددة، منها تطوير الخوادم، علم البيانات، الخوارزميات وحل المشكلات، الأمن السيبراني، الرؤية الحاسوبية، وقواعد البيانات.",
+                fields: ["backend", "datascience", "algorithms", "cybersecurity", "computervision", "database"]
+            },
+            IT: {
+                code: "Information Technology",
+                title: "تقنية المعلومات",
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+                hook: "البرامج ما بتشتغل براها؛ في شبكات وسيرفرات وأنظمة وبنية تقنية الزم كلها تشتغل مع بعض، وهنا بيظهر دور تقنية المعلومات.",
+                overview: "تقنية المعلومات بتركز على تشغيل وإدارة التقنيات والبنية التحتية التي تعتمد عليها المؤسسات، مثل الشبكات والأنظمة والخوادم والحوسبة السحابية والدعم التقني والأمن.",
+                studies: "الشبكات، أنظمة التشغيل، إدارة الأنظمة، قواعد البيانات، أمن المعلومات، الحوسبة السحابية، البنية التحتية، الدعم الفني وإدارة الموارد التقنية.",
+                careers: "خريج تقنية المعلومات ممكن يتجه للشبكات، الأمن السيبراني، الحوسبة السحابية، إدارة الأنظمة، الدعم الفني، والتطوير والتشغيل.",
+                fields: ["networking", "cybersecurity", "cloud", "sysadmin", "itsupport", "devops"]
+            },
+            IS: {
+                code: "Information Systems",
+                title: "نظم المعلومات",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+                hook: "الشركات عندها بيانات وعمليات ومشاكل يومية، ونظم المعلومات بتربط التقنية باحتياجات العمل عشان تحول المشاكل لحلول عملية.",
+                overview: "نظم المعلومات بتركز على استخدام التقنية والبيانات والأنظمة لمساعدة المؤسسات في إدارة أعمالها وتحسين العمليات واتخاذ قرارات أفضل. التخصص بيجمع بين فهم التقنية وفهم احتياجات المؤسسات.",
+                studies: "تحليل الأنظمة، تحليل الأعمال، قواعد البيانات، تحليل البيانات، نمذجة الأنظمة، إدارة المشاريع التقنية، نظم المؤسسات وإدارة المعلومات.",
+                careers: "خريج نظم المعلومات ممكن يتجه لتحليل البيانات، تحليل الأعمال، تحليل الأنظمة، قواعد البيانات، أنظمة تخطيط موارد المؤسسات، وإدارة مشاريع تقنية المعلومات.",
+                fields: ["dataanalysis", "businessanalysis", "systemsanalysis", "database", "erp", "itpm"]
+            },
+            AI_MAJOR: {
+                code: "Artificial Intelligence",
+                title: "الذكاء الاصطناعي",
+                image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=800&auto=format&fit=crop",
+                hook: "لو مهتم تعرف كيف نخلي الكمبيوتر يتعلم من البيانات، يتعرف على الصور، يفهم الكلام، ويتوقع النتائج، فتخصص الذكاء الاصطناعي بيديك الأساس العلمي والعملي لبناء الأنظمة الذكية.",
+                overview: "الذكاء الاصطناعي تخصص جامعي بيركز على بناء أنظمة قادرة على التعلم من البيانات، واكتشاف الأنماط، والتنبؤ بالنتائج، والتعامل مع النصوص والصور والصوت. التخصص بيجمع بين البرمجة والرياضيات والإحصاء والبيانات والخوارزميات.",
+                studies: "البرمجة، الرياضيات، الإحصاء والاحتمالات، هياكل البيانات والخوارزميات، معالجة البيانات، تعلم الآلة، التعلم العميق، معالجة اللغة الطبيعية، الرؤية الحاسوبية والذكاء الاصطناعي التوليدي.",
+                careers: "خريج الذكاء الاصطناعي ممكن يتجه لتعلم الآلة، التعلم العميق، علم البيانات، الرؤية الحاسوبية، معالجة اللغة الطبيعية، الذكاء الاصطناعي التوليدي، وهندسة الذكاء الاصطناعي.",
+                fields: ["machinelearning", "deeplearning", "datascience", "computervision", "nlp", "genai", "aiengineering"]
+            }
+        };
+        
+        // Fields Data
+        const fields = {
+            frontend: {
+                title: "تطوير الواجهات الأمامية (Frontend Development)",
+                category: "هندسة البرمجيات / علوم الحاسوب",
+                hook: "لو داير تعرف كيف بتتحول التصاميم لتطبيقات ويب حقيقية بتشوفها وتتفاعل معاها، فمجال تطوير الواجهات الأمامية هو البداية.",
+                def: "تطوير الواجهات الأمامية هو الجزء المسؤول عن كل ما يراه المستخدم ويتفاعل معه في التطبيق أو الموقع، من الأزرار والألوان والتخطيطات إلى الحركات والتأثيرات.",
+                daily: "المتخصص بيبني واجهات المستخدم، بيحول التصاميم لكود، بيتعامل مع المتصفحات، بيطبق تجربة المستخدم، وبيتأكد من أداء الموقع وتجاوبه مع الأجهزة المختلفة.",
+                jobs: "شركات البرمجيات، وكالات التصميم، المتاجر الإلكترونية، وفرق تطوير المنتجات الرقمية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الرياضيات والبرمجة.", "عقلية إبداعية تحب التصميم."],
+                skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX Basics", "Git & GitHub", "React/Vue/Angular", "أدوات البناء (Vite/Webpack)"],
+                techs: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Vue.js", "Angular", "Tailwind CSS", "Bootstrap", "Git", "Figma"],
+                roadmap: ["أساسيات HTML و CSS", "JavaScript الأساسية", "DOM والتفاعل", "Git و GitHub", "إطار عمل (React/Vue)", "إدارة الحالة", "APIs و AJAX", "Testing", "Deployment"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "موقع شخصي", desc: "بناء موقع شخصي بسيط باستخدام HTML و CSS." },
+                    { level: "متوسط", badge: "badge-inter", name: "تطبيق مهام", desc: "تطبيق لإدارة المهام مع React وإدارة الحالة." },
+                    { level: "متقدم", badge: "badge-adv", name: "متجر إلكتروني", desc: "متجر إلكتروني كامل مع سلة مشتريات وواجهات متعددة." }
+                ],
+                ai: "الذكاء الاصطناعي يساعد في توليد كود CSS وتصميم واجهات أسرع، وتحسين تجربة المستخدم بناءً على سلوكه. المتخصص لازم يظل متمكنًا من الأساسيات لأنه هو من يدقق ويوجه الأدوات."
+            },
+            backend: {
+                title: "تطوير الواجهات الخلفية (Backend Development)",
+                category: "هندسة البرمجيات / علوم الحاسوب",
+                hook: "لو داير تعرف الحاجات الحقيقية البتحصل ورا التطبيق، من معالجة الطلبات وحفظ البيانات لحد حماية النظام وتشغيله مع عدد كبير من المستخدمين، فمجال تطوير الخوادم هو المكان البتبدأ منو.",
+                def: "تطوير الخوادم هو الجزء المسؤول عن المنطق الداخلي للتطبيق ومعالجة طلبات المستخدمين، والتعامل مع قواعد البيانات، وإدارة الحسابات والصلاحيات، وبناء الخدمات البتخلي التطبيق يشتغل بصورة صحيحة.",
+                daily: "المتخصص ببني الخدمات والواجهات البرمجية، بيتعامل مع قواعد البيانات، بيطبق منطق النظام، بيحمي البيانات، وبيجهز التطبيق عشان يتعامل مع عدد كبير من المستخدمين والطلبات.",
+                jobs: "شركات البرمجيات، البنوك والمؤسسات المالية، شركات الاتصالات، والمنصات التفاعلية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الرياضيات والبرمجة.", "عقلية منطقية تحب حل المشكلات."],
+                skills: ["البرمجة كائنية التوجه", "هياكل البيانات والخوارزميات", "قواعد البيانات", "تصميم واجهات برمجة التطبيقات", "التعامل مع الشبكات", "الأمان"],
+                techs: ["Node.js", "Python", "Java", "C#", "PHP", "SQL", "PostgreSQL", "MongoDB", "Docker", "Git"],
+                roadmap: ["لغة برمجة أساسية", "هياكل البيانات", "قواعد البيانات", "بناء REST APIs", "المصادقة والأمان", "التعامل مع الخوادم", "Docker", "الاختبار", "النشر"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "API بسيط", desc: "بناء API لإدارة المهام باستخدام Node.js و Express." },
+                    { level: "متوسط", badge: "badge-inter", name: "نظام مدونة", desc: "نظام مدونة مع مصادقة وصلاحيات وقاعدة بيانات." },
+                    { level: "متقدم", badge: "badge-adv", name: "نظام متجر", desc: "نظام خلفي لمتجر إلكتروني مع سلة ومدفوعات." }
+                ],
+                ai: "الذكاء الاصطناعي يساعد في اقتراح تحسينات للكود واكتشاف الثغرات، لكن التصميم المعماري للنظام وقرارات الأداء تظل مسؤولية المطور."
+            },
+            fullstack: {
+                title: "تطوير التطبيقات المتكاملة (Full Stack)",
+                category: "هندسة البرمجيات",
+                hook: "لو داير تكون قادر تبني تطبيق كامل من الصفر، من الواجهة اللي بيشوفها المستخدم لحد الخادم وقاعدة البيانات، فمجال Full Stack بيديك الصورة الكاملة.",
+                def: "تطوير التطبيقات المتكاملة هو الجمع بين مهارات الواجهة الأمامية والخلفية، بحيث يقدر المطور يبني تطبيق ويب كامل ويشرف على جميع أجزائه.",
+                daily: "المتخصص بيشتغل على الواجهة والخادم وقاعدة البيانات، بيربط بينهم، بيحل مشاكل الأداء والتكامل، وبيشارك في اتخاذ القرارات التقنية للمشروع.",
+                jobs: "الشركات الناشئة، شركات البرمجيات، وكالات التطوير، والعمل الحر.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات البرمجة.", "قدرة على التعلم المستمر."],
+                skills: ["HTML/CSS/JS", "إطار عمل أمامي", "لغة خلفية", "قواعد البيانات", "APIs", "Git", "النشر"],
+                techs: ["React", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker", "Git", "AWS/Vercel"],
+                roadmap: ["أساسيات الواجهة", "أساسيات الخادم", "قواعد البيانات", "ربط الواجهة بالخادم", "المصادقة", "النشر", "تحسين الأداء"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تطبيق ملاحظات", desc: "تطبيق ملاحظات كامل مع واجهة وخادم." },
+                    { level: "متوسط", badge: "badge-inter", name: "منصة مدونة", desc: "منصة مدونة بمصادقة وصلاحيات وتعليقات." },
+                    { level: "متقدم", badge: "badge-adv", name: "منصة تعليمية", desc: "منصة تعليمية متكاملة مع لوحات تحكم." }
+                ],
+                ai: "الذكاء الاصطناعي يساعد في تسريع تطوير الأجزاء المتكررة، لكن الفهم الكامل لدورة التطوير هو اللي يميز المطور المتكامل."
+            },
+            mobile: {
+                title: "تطوير تطبيقات الموبايل (Mobile Development)",
+                category: "هندسة البرمجيات",
+                hook: "لو داير تبني تطبيقات تلفونات بتوصل لملايين المستخدمين، فمجال تطوير الموبايل بيفتح ليك باب كبير.",
+                def: "تطوير تطبيقات الموبايل هو بناء تطبيقات تعمل على أنظمة Android و iOS، سواء بتقنيات أصلية أو إطارات عمل متعددة المنصات.",
+                daily: "المتخصص بيصمم ويطور واجهات التطبيق، بيتعامل مع APIs، بيختبر التطبيق على أجهزة مختلفة، وبيطور تحديثات بناءً على ملاحظات المستخدمين.",
+                jobs: "شركات التطبيقات، البنوك، شركات الاتصالات، والشركات الناشئة.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات البرمجة والمنطق.", "جهاز للاختبار أو محاكي."],
+                skills: ["البرمجة كائنية التوجه", "واجهات المستخدم", "التعامل مع APIs", "قواعد البيانات المحلية", "النشر على المتاجر"],
+                techs: ["Flutter", "React Native", "Swift", "Kotlin", "Dart", "Firebase", "REST APIs", "Git"],
+                roadmap: ["أساسيات البرمجة", "اختيار تقنية (Flutter/Native)", "واجهات المستخدم", "التعامل مع APIs", "قواعد البيانات المحلية", "الاختبار", "النشر"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تطبيق مهام", desc: "تطبيق مهام بسيط مع تخزين محلي." },
+                    { level: "متوسط", badge: "badge-inter", name: "تطبيق طقس", desc: "تطبيق يعرض حالة الطقس من API خارجي." },
+                    { level: "متقدم", badge: "badge-adv", name: "تطبيق متجر", desc: "تطبيق متجر مع مصادقة وسلة مشتريات." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحسين تجربة المستخدم وتوصيات المحتوى داخل التطبيقات، وبيوفر أدوات لتحليل سلوك المستخدمين."
+            },
+            qa: {
+                title: "اختبار البرمجيات (Software Testing)",
+                category: "هندسة البرمجيات",
+                hook: "أي تطبيق محترم ورا نجاحو فريق اختبار شاطر، فمجال اختبار البرمجيات هو حجر الأساس لضمان جودة أي منتج رقمي.",
+                def: "اختبار البرمجيات هو عملية التحقق من أن التطبيق يعمل كما هو متوقع، واكتشاف الأخطاء قبل وصولها للمستخدم.",
+                daily: "المتخصص بيكتب خطط اختبار، بينفذ اختبارات يدوية وآلية، بيسجل الأخطاء، وبيتعاون مع المطورين لتحسين الجودة.",
+                jobs: "شركات البرمجيات، البنوك، شركات التأمين، والمؤسسات التي تعتمد على أنظمة برمجية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "عقلية تحليلية دقيقة.", "معرفة أساسيات البرمجة."],
+                skills: ["كتابة حالات الاختبار", "الاختبار اليدوي", "الاختبار الآلي", "تتبع الأخطاء", "أدوات الاختبار"],
+                techs: ["Selenium", "Cypress", "Playwright", "Jira", "Postman", "Appium", "Git"],
+                roadmap: ["أساسيات البرمجة", "مفاهيم الاختبار", "كتابة حالات الاختبار", "أدوات الاختبار", "الاختبار الآلي", "CI/CD", "الأتمتة المتقدمة"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "خطة اختبار", desc: "كتابة خطة اختبار لتطبيق ويب بسيط." },
+                    { level: "متوسط", badge: "badge-inter", name: "اختبار آلي", desc: "أتمتة اختبارات لتطبيق باستخدام Selenium." },
+                    { level: "متقدم", badge: "badge-adv", name: "إطار اختبار", desc: "بناء إطار اختبار آلي متكامل مع تقارير." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في توليد حالات اختبار تلقائيًا واكتشاف الأخطاء المتكررة، لكن الفهم العميق للمنتج هو اللي يوجه الاختبار الفعال."
+            },
+            devops: {
+                title: "DevOps",
+                category: "هندسة البرمجيات / تقنية المعلومات",
+                hook: "لو داير تكون حلقة الوصل بين التطوير والتشغيل، وتخلي النشر أسرع وأكثر أمانًا، فمجال DevOps هو مكانك.",
+                def: "DevOps هو نهج يجمع بين التطوير والتشغيل لتحسين سرعة التسليم وجودة البرمجيات من خلال الأتمتة والتعاون.",
+                daily: "المتخصص بيبني خطوط أنابيب النشر الآلي، بيدير البنية التحتية، بيراقب الأنظمة، وبيضمن استقرار البيئات المختلفة.",
+                jobs: "شركات البرمجيات الكبيرة، البنوك، شركات الاتصالات، والمنصات السحابية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الشبكات وأنظمة التشغيل.", "معرفة بالبرمجة والسكربتات."],
+                skills: ["أنظمة التشغيل", "الشبكات", "الأتمتة", "الحاويات", "CI/CD", "المراقبة"],
+                techs: ["Docker", "Kubernetes", "Jenkins", "GitLab CI", "Terraform", "Ansible", "Linux", "AWS", "Prometheus"],
+                roadmap: ["Linux", "Git", "CI/CD", "Docker", "Kubernetes", "IaC (Terraform)", "المراقبة", "الأمان"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "خط أنابيب بسيط", desc: "إعداد CI/CD لنشر تطبيق ويب بسيط." },
+                    { level: "متوسط", badge: "badge-inter", name: "حاويات", desc: "تعبئة تطبيق في Docker ونشره على خادم." },
+                    { level: "متقدم", badge: "badge-adv", name: "بنية تحتية كود", desc: "إدارة البنية التحتية باستخدام Terraform." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في مراقبة الأنظمة واكتشاف الأعطال قبل حدوثها، وتحسين استهلاك الموارد."
+            },
+            cybersecurity: {
+                title: "الأمن السيبراني (Cybersecurity)",
+                category: "تقنية المعلومات / علوم الحاسوب",
+                hook: "لو داير تحمي بيانات ومعلومات المؤسسات من الهجمات، وتكون خط الدفاع الأول، فمجال الأمن السيبراني هو المكان.",
+                def: "الأمن السيبراني هو حماية الأنظمة والشبكات والبيانات من الهجمات الإلكترونية والوصول غير المصرح به.",
+                daily: "المتخصص بيراقب الشبكات، بيحلل التهديدات، بيسد الثغرات، وبيضع سياسات أمنية لحماية المعلومات.",
+                jobs: "البنوك، المؤسسات الحكومية، شركات الاتصالات، وشركات الأمن السيبراني.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الشبكات وأنظمة التشغيل.", "اهتمام بأمن المعلومات."],
+                skills: ["الشبكات", "أنظمة التشغيل", "تحليل التهديدات", "الاختبار الأخلاقي", "إدارة المخاطر"],
+                techs: ["Wireshark", "Nmap", "Metasploit", "Burp Suite", "Kali Linux", "Splunk", "Firewalls"],
+                roadmap: ["أساسيات الشبكات", "أساسيات الأمن", "أنظمة التشغيل", "الاختبار الأخلاقي", "الاستجابة للحوادث", "الأمن السحابي"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "فحص شبكة", desc: "فحص شبكة بسيطة باستخدام Nmap." },
+                    { level: "متوسط", badge: "badge-inter", name: "تحليل حزمة", desc: "تحليل حزم الشبكة باستخدام Wireshark." },
+                    { level: "متقدم", badge: "badge-adv", name: "اختبار اختراق", desc: "اختبار اختراق لتطبيق ويب في بيئة معزولة." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في اكتشاف الهجمات والتهديدات بشكل أسرع، لكن المهاجمين أيضًا بيستخدموه، فالمجال بيتطور بسرعة."
+            },
+            database: {
+                title: "تطوير قواعد البيانات (Database Development)",
+                category: "تقنية المعلومات / نظم المعلومات",
+                hook: "البيانات هي أهم أصل في أي مؤسسة، وقواعد البيانات هي الوعاء اللي بيحفظها وينظمها.",
+                def: "تطوير قواعد البيانات هو تصميم وبناء وإدارة قواعد البيانات التي تخزن بيانات التطبيقات والمؤسسات.",
+                daily: "المتخصص بيصمم قواعد بيانات، بيكتب استعلامات، بيعمل نسخ احتياطية، وبيحسن أداء قواعد البيانات.",
+                jobs: "البنوك، شركات البرمجيات، المؤسسات الحكومية، وشركات البيانات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات البرمجة.", "فهم جيد للمنطق."],
+                skills: ["SQL", "تصميم قواعد البيانات", "تحسين الأداء", "الأمان", "النسخ الاحتياطي"],
+                techs: ["MySQL", "PostgreSQL", "Oracle", "SQL Server", "MongoDB", "Redis"],
+                roadmap: ["أساسيات SQL", "تصميم الجداول", "الاستعلامات المتقدمة", "الفهارس وتحسين الأداء", "النسخ الاحتياطي", "الأمان"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "قاعدة بيانات مكتبة", desc: "تصميم قاعدة بيانات لمكتبة بسيطة." },
+                    { level: "متوسط", badge: "badge-inter", name: "قاعدة بيانات متجر", desc: "قاعدة بيانات متجر إلكتروني مع علاقات." },
+                    { level: "متقدم", badge: "badge-adv", name: "قاعدة بيانات موزعة", desc: "تصميم قاعدة بيانات عالية الأداء." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحسين الاستعلامات واكتشاف الاختناقات، لكن التصميم الصحيح يظل أساسي."
+            },
+            networking: {
+                title: "الشبكات (Networking)",
+                category: "تقنية المعلومات",
+                hook: "كل الأجهزة اللي بنستخدمها متصلة بشبكة، وفهم الشبكات هو مفتاح فهم كيف يشتغل العالم الرقمي.",
+                def: "الشبكات هي مجال يهتم بتصميم وتركيب وإدارة شبكات الحاسوب التي تربط الأجهزة والمؤسسات بالإنترنت.",
+                daily: "المتخصص بيركب أجهزة شبكة، بيعد إعدادات الراوتر والسويتش، بيحل مشاكل الاتصال، وبيراقب أمان الشبكة.",
+                jobs: "شركات الاتصالات، البنوك، المؤسسات الحكومية، وشركات تكنولوجيا المعلومات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات أنظمة التشغيل.", "اهتمام بالبنية التحتية."],
+                skills: ["بروتوكولات الشبكة", "إعداد الراوترات", "تحليل المشاكل", "أمن الشبكات"],
+                techs: ["Cisco", "Wireshark", "TCP/IP", "VPN", "Firewalls", "DNS", "DHCP"],
+                roadmap: ["أساسيات الشبكات", "TCP/IP", "إعداد الراوترات", "VPN", "أمن الشبكات", "الشبكات السحابية"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "شبكة منزلية", desc: "إعداد شبكة منزلية صغيرة مع راوتر." },
+                    { level: "متوسط", badge: "badge-inter", name: "شبكة مكتب", desc: "تصميم وإعداد شبكة مكتب صغير." },
+                    { level: "متقدم", badge: "badge-adv", name: "شبكة مؤسسة", desc: "تصميم شبكة لمؤسسة متعددة الفروع." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في إدارة الشبكات واكتشاف الأعطال تلقائيًا، وتحسين توزيع الحمل."
+            },
+            cloud: {
+                title: "الحوسبة السحابية (Cloud Computing)",
+                category: "تقنية المعلومات",
+                hook: "كل التطبيقات والخدمات اللي بتستخدمها يوميًا تقريبًا شغالة على السحابة. لو داير تكون جزء من البنية التحتية للمستقبل، فمجال الحوسبة السحابية هو المكان.",
+                def: "الحوسبة السحابية هي تقديم خدمات الحوسبة (سيرفرات، تخزين، قواعد بيانات، شبكات) عبر الإنترنت بدل الاعتماد على أجهزة محلية.",
+                daily: "المتخصص بيصمم وينشر البنية التحتية السحابية، بيدير الخدمات السحابية، بيراقب التكلفة والأداء، وبيضمن أمن البيانات.",
+                jobs: "شركات البرمجيات، المؤسسات المالية، شركات الاتصالات، ومزودو الخدمات السحابية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الشبكات وأنظمة التشغيل.", "معرفة بالبرمجة."],
+                skills: ["أنظمة التشغيل", "الشبكات", "الأتمتة", "الأمان السحابي", "إدارة التكلفة"],
+                techs: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform", "Linux"],
+                roadmap: ["أساسيات الحوسبة", "الشبكات", "خدمات السحابة الأساسية", "الحاويات", "البنية التحتية كود", "الأمان", "الشهادات"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "خادم سحابي", desc: "إنشاء خادم سحابي ونشر تطبيق بسيط." },
+                    { level: "متوسط", badge: "badge-inter", name: "تطبيق متكامل", desc: "نشر تطبيق ويب متكامل على السحابة." },
+                    { level: "متقدم", badge: "badge-adv", name: "بنية تحتية", desc: "بناء بنية تحتية سحابية كاملة باستخدام Terraform." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحسين استهلاك الموارد السحابية والتنبؤ بالاحتياجات، لكن المعرفة المعمارية تظل أساسية."
+            },
+            sysadmin: {
+                title: "إدارة الأنظمة (Systems Administration)",
+                category: "تقنية المعلومات",
+                hook: "لو داير تكون المسؤول عن تشغيل وصيانة الأنظمة والسيرفرات، فمجال إدارة الأنظمة هو المسار.",
+                def: "إدارة الأنظمة هي مسؤولية تشغيل وصيانة أنظمة التشغيل والسيرفرات والخدمات التي تعتمد عليها المؤسسة.",
+                daily: "المتخصص بيدير السيرفرات، بيعمل تحديثات أمنية، بيراقب الأداء، وبيحل مشاكل التشغيل.",
+                jobs: "البنوك، المؤسسات الحكومية، شركات الاتصالات، ومراكز البيانات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "معرفة بأنظمة التشغيل.", "أساسيات الشبكات."],
+                skills: ["Linux", "Windows Server", "الشبكات", "الأمان", "الأتمتة"],
+                techs: ["Linux", "Windows Server", "Bash", "PowerShell", "Active Directory", "VMware", "Nagios"],
+                roadmap: ["Linux", "Windows Server", "الشبكات", "إدارة المستخدمين", "المراقبة", "الأتمتة", "الأمان"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "خادم ويب", desc: "إعداد خادم ويب على Linux." },
+                    { level: "متوسط", badge: "badge-inter", name: "إدارة مستخدمين", desc: "إعداد Active Directory لمؤسسة صغيرة." },
+                    { level: "متقدم", badge: "badge-adv", name: "مراقبة", desc: "إعداد نظام مراقبة لعدة سيرفرات." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في المراقبة الاستباقية واكتشاف المشاكل، لكن الإدارة اليدوية تظل مطلوبة."
+            },
+            itsupport: {
+                title: "الدعم الفني (Technical Support)",
+                category: "تقنية المعلومات",
+                hook: "لو بتحب تساعد الناس وتحل مشاكلهم التقنية، فمجال الدعم الفني هو البداية المثالية.",
+                def: "الدعم الفني هو تقديم المساعدة للمستخدمين في حل المشاكل التقنية المتعلقة بالأجهزة والبرامج والشبكات.",
+                daily: "المتخصص بيستقبل المشاكل، بيحلها عن بعد أو حضوريًا، بيسجل الحلول، وبيرشد المستخدمين.",
+                jobs: "شركات تكنولوجيا المعلومات، مراكز الاتصال، والمؤسسات التي تقدم خدمات تقنية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "مهارات تواصل جيدة.", "أساسيات الأجهزة والبرامج."],
+                skills: ["حل المشاكل", "مهارات التواصل", "أساسيات الشبكات", "أنظمة التشغيل"],
+                techs: ["Windows", "Linux", "TeamViewer", "Zendesk", "Jira", "AnyDesk"],
+                roadmap: ["أساسيات الأجهزة", "Windows/Linux", "أساسيات الشبكات", "أدوات الدعم", "إدارة التذاكر", "الأمان"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "دليل مستخدم", desc: "إعداد دليل بسيط لحل مشاكل شائعة." },
+                    { level: "متوسط", badge: "badge-inter", name: "نظام تذاكر", desc: "إعداد نظام تذاكر دعم تجريبي." },
+                    { level: "متقدم", badge: "badge-adv", name: "دعم آلي", desc: "بناء قاعدة معرفة وردود آلية." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تقديم دعم أولي تلقائي، لكن التواصل البشري يظل مهمًا في الحالات المعقدة."
+            },
+            dataanalysis: {
+                title: "تحليل البيانات (Data Analysis)",
+                category: "نظم المعلومات",
+                hook: "في بيانات كتير حوالينا بس القليل اللي يعرف يستخرج منها قرارات، فمجال تحليل البيانات بيديك القدرة تحول الأرقام لحكايات.",
+                def: "تحليل البيانات هو استخراج رؤى وقرارات من البيانات باستخدام أدوات إحصائية وبرمجية.",
+                daily: "المتخصص بيجمع وينظف البيانات، بيحللها، بيبني تقارير ولوحات معلومات، وبيقدم توصيات لاتخاذ القرار.",
+                jobs: "البنوك، شركات التسويق، شركات الاتصالات، والمؤسسات الحكومية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الإحصاء.", "مهارات تحليلية."],
+                skills: ["الإحصاء", "تنظيف البيانات", "تصور البيانات", "SQL", "Excel المتقدم"],
+                techs: ["Excel", "SQL", "Python", "Power BI", "Tableau", "Pandas", "Google Analytics"],
+                roadmap: ["Excel", "SQL", "أساسيات الإحصاء", "Python للبيانات", "تصور البيانات", "لوحات المعلومات", "مشاريع تطبيقية"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تحليل مبيعات", desc: "تحليل بيانات مبيعات باستخدام Excel." },
+                    { level: "متوسط", badge: "badge-inter", name: "لوحة معلومات", desc: "بناء لوحة معلومات باستخدام Power BI." },
+                    { level: "متقدم", badge: "badge-adv", name: "تحليل تنبؤي", desc: "تحليل بيانات واستخراج توقعات باستخدام Python." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحليل البيانات وتوليد التقارير تلقائيًا، لكن تفسير النتائج واتخاذ القرار يظل بشريًا."
+            },
+            businessanalysis: {
+                title: "تحليل الأعمال (Business Analysis)",
+                category: "نظم المعلومات",
+                hook: "لو بتحب تفهم المشاكل من جذورها وتربط بين احتياجات العمل والحلول التقنية، فمجال تحليل الأعمال هو مكانك.",
+                def: "تحليل الأعمال هو فهم احتياجات المؤسسة وتحويلها لمتطلبات واضحة تمكن الفرق التقنية من بناء حلول مناسبة.",
+                daily: "المتخصص بيجتمع مع أصحاب المصلحة، بيوثق المتطلبات، بيحلل العمليات، وبيتابع تنفيذ الحلول.",
+                jobs: "البنوك، شركات البرمجيات، المؤسسات الحكومية، وشركات الاستشارات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "مهارات تواصل وتحليل.", "فهم أساسيات التقنية."],
+                skills: ["تحليل المتطلبات", "التوثيق", "التواصل", "تحليل العمليات", "إدارة التغيير"],
+                techs: ["Jira", "Confluence", "Visio", "Excel", "SQL", "BPMN"],
+                roadmap: ["مفاهيم تحليل الأعمال", "جمع المتطلبات", "التوثيق", "تحليل العمليات", "إدارة المشاريع", "أدوات التحليل"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "توثيق متطلبات", desc: "توثيق متطلبات تطبيق صغير." },
+                    { level: "متوسط", badge: "badge-inter", name: "تحليل عملية", desc: "تحليل عملية في مؤسسة واقتراح تحسينات." },
+                    { level: "متقدم", badge: "badge-adv", name: "دراسة جدوى", desc: "إعداد دراسة جدوى لمشروع تقني." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحليل ملاحظات العملاء واستخراج المتطلبات، لكن التواصل البشري يظل جوهر المجال."
+            },
+            systemsanalysis: {
+                title: "تحليل النظم (Systems Analysis)",
+                category: "نظم المعلومات",
+                hook: "لو داير تفهم كيف الأنظمة بتترابط وتصمم حلول متكاملة، فمجال تحليل النظم هو المسار.",
+                def: "تحليل النظم هو دراسة الأنظمة القائمة وتصميم أنظمة جديدة تلبي احتياجات المؤسسة بكفاءة.",
+                daily: "المتخصص بيحلل النظم الحالية، بيحدد نقاط الضعف، بيصمم حلولًا، وبيتابع تنفيذها.",
+                jobs: "البنوك، شركات البرمجيات، المؤسسات الحكومية، وشركات الاستشارات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "فهم أساسيات التقنية.", "مهارات تحليلية."],
+                skills: ["تحليل النظم", "نمذجة العمليات", "قواعد البيانات", "التوثيق"],
+                techs: ["UML", "Visio", "SQL", "BPMN", "Jira"],
+                roadmap: ["مفاهيم النظم", "تحليل المتطلبات", "نمذجة النظم", "قواعد البيانات", "التصميم", "التنفيذ"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "نموذج نظام", desc: "رسم نموذج لنظام بسيط." },
+                    { level: "متوسط", badge: "badge-inter", name: "تحليل نظام", desc: "تحليل نظام قائم واقتراح تحسينات." },
+                    { level: "متقدم", badge: "badge-adv", name: "تصميم نظام", desc: "تصميم نظام متكامل مع قواعد بيانات." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحليل الأنظمة واكتشاف الاختناقات، لكن الفهم الشامل للنظام يظل أساسيًا."
+            },
+            erp: {
+                title: "تخطيط موارد المؤسسات (ERP)",
+                category: "نظم المعلومات",
+                hook: "لو داير تشتغل على أنظمة بتدير كل شيء في المؤسسة من المالية للموارد البشرية للمخزون، فمجال ERP هو المكان.",
+                def: "تخطيط موارد المؤسسات هو أنظمة متكاملة تدير العمليات الأساسية للمؤسسة في نظام واحد.",
+                daily: "المتخصص بيفهم احتياجات المؤسسة، بيعد نظام ERP، بيدرب المستخدمين، وبيحل المشاكل التشغيلية.",
+                jobs: "الشركات الكبيرة، المصانع، شركات التوزيع، ومؤسسات الخدمات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "فهم عمليات الأعمال.", "أساسيات التقنية."],
+                skills: ["فهم عمليات الأعمال", "تحليل المتطلبات", "إدارة التغيير", "التدريب"],
+                techs: ["SAP", "Oracle ERP", "Microsoft Dynamics", "Odoo", "SQL"],
+                roadmap: ["فهم عمليات الأعمال", "مقدمة في ERP", "اختيار النظام", "الإعداد", "التدريب", "الدعم"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تحليل احتياجات", desc: "تحليل احتياجات مؤسسة صغيرة لنظام ERP." },
+                    { level: "متوسط", badge: "badge-inter", name: "إعداد Odoo", desc: "إعداد نظام Odoo لمؤسسة صغيرة." },
+                    { level: "متقدم", badge: "badge-adv", name: "تخصيص ERP", desc: "تخصيص وحدة ERP حسب احتياجات محددة." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحسين تخطيط الموارد والتنبؤ بالطلب، لكن فهم العمليات يظل أساسيًا."
+            },
+            itpm: {
+                title: "إدارة مشاريع تقنية المعلومات (IT Project Management)",
+                category: "نظم المعلومات",
+                hook: "لو بتحب تنظم وتدير وتوصل المشاريع لبر الأمان، فمجال إدارة مشاريع تقنية المعلومات هو مسارك.",
+                def: "إدارة مشاريع تقنية المعلومات هي تخطيط وتنفيذ ومتابعة المشاريع التقنية لضمان تسليمها في الوقت والميزانية المحددة.",
+                daily: "المتخصص بيخطط للمشروع، بيوزع المهام، بيتابع التقدم، وبيتعامل مع المخاطر والتحديات.",
+                jobs: "شركات البرمجيات، البنوك، المؤسسات الحكومية، وشركات الاستشارات.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "مهارات تنظيمية وتواصل.", "فهم أساسيات التقنية."],
+                skills: ["التخطيط", "إدارة الفريق", "إدارة المخاطر", "التواصل", "المتابعة"],
+                techs: ["Jira", "Trello", "MS Project", "Asana", "Slack", "Excel"],
+                roadmap: ["مفاهيم إدارة المشاريع", "التخطيط", "إدارة الفريق", "المتابعة", "إدارة المخاطر", "شهادات PMP/Agile"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "خطة مشروع", desc: "إعداد خطة لمشروع تقني صغير." },
+                    { level: "متوسط", badge: "badge-inter", name: "إدارة فريق", desc: "إدارة فريق في مشروع تطبيق ويب." },
+                    { level: "متقدم", badge: "badge-adv", name: "مشروع متكامل", desc: "إدارة مشروع تقني كبير من البداية للنهاية." }
+                ],
+                ai: "الذكاء الاصطناعي بيساعد في تحسين تقديرات الوقت وتوزيع الموارد، لكن القيادة البشرية تظل جوهر الإدارة."
+            },
+            machinelearning: {
+                title: "تعلم الآلة (Machine Learning)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تخلي الكمبيوتر يتعلم من البيانات ويتخذ قرارات، فمجال تعلم الآلة هو المدخل الأساسي.",
+                def: "تعلم الآلة هو بناء نماذج قادرة على التعلم من البيانات وإعطاء توقعات أو قرارات دون برمجة صريحة لكل حالة.",
+                daily: "المتخصص بيجمع وينظف البيانات، بيبني النماذج، بيدربها ويحسن أداءها، وبيقيّم نتائجها.",
+                jobs: "شركات التقنية، البنوك، شركات التجارة الإلكترونية، والمراكز البحثية.",
+                reqs: ["حاسوب بذاكرة 16GB RAM (يفضل).", "أساسيات الرياضيات والإحصاء.", "إتقان البرمجة (Python)."],
+                skills: ["الإحصاء", "البرمجة", "معالجة البيانات", "تقييم النماذج", "تحسين الأداء"],
+                techs: ["Python", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "TensorFlow", "PyTorch"],
+                roadmap: ["Python", "الإحصاء", "Pandas & NumPy", "Scikit-learn", "تقييم النماذج", "تحسين الأداء", "مشاريع تطبيقية"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تصنيف", desc: "نموذج تصنيف بسيط باستخدام Scikit-learn." },
+                    { level: "متوسط", badge: "badge-inter", name: "توقع سعر", desc: "نموذج توقع أسعار باستخدام الانحدار." },
+                    { level: "متقدم", badge: "badge-adv", name: "نظام توصية", desc: "بناء نظام توصية متكامل." }
+                ],
+                ai: "تعلم الآلة هو قلب الذكاء الاصطناعي، والأدوات بتتطور بسرعة، لكن فهم الرياضيات خلف النماذج يظل تميزًا كبيرًا."
+            },
+            deeplearning: {
+                title: "التعلم العميق (Deep Learning)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تتعمق في الشبكات العصبية اللي بتحل مشاكل معقدة زي التعرف على الصور والصوت، فمجال التعلم العميق هو المسار.",
+                def: "التعلم العميق هو فرع من تعلم الآلة يستخدم شبكات عصبية متعددة الطبقات لحل مشاكل معقدة.",
+                daily: "المتخصص بيصمم الشبكات العصبية، بيدربها على بيانات ضخمة، وبيحسن أداءها باستخدام تقنيات متقدمة.",
+                jobs: "شركات التقنية الكبرى، المراكز البحثية، شركات الصحة والتكنولوجيا.",
+                reqs: ["حاسوب قوي أو GPU.", "أساسيات قوية في الرياضيات.", "إتقان Python وتعلم الآلة."],
+                skills: ["الرياضيات", "الشبكات العصبية", "تحسين الأداء", "التعامل مع البيانات الضخمة"],
+                techs: ["TensorFlow", "PyTorch", "Keras", "CUDA", "Python", "OpenCV"],
+                roadmap: ["أساسيات تعلم الآلة", "الشبكات العصبية", "CNN", "RNN/LSTM", "Transformers", "مشاريع متقدمة"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تصنيف صور", desc: "نموذج CNN لتصنيف الصور." },
+                    { level: "متوسط", badge: "badge-inter", name: "تحليل نصوص", desc: "نموذج RNN لتحليل النصوص." },
+                    { level: "متقدم", badge: "badge-adv", name: "نموذج تحويلي", desc: "بناء نموذج Transformer مبسط." }
+                ],
+                ai: "التعلم العميق هو المحرك الأساسي للثورة الحالية في الذكاء الاصطناعي، من الصور للنصوص للتوليد."
+            },
+            datascience: {
+                title: "علم البيانات (Data Science)",
+                category: "الذكاء الاصطناعي / علوم الحاسوب",
+                hook: "لو داير تحول البيانات لفهم عميق وقرارات استراتيجية، فمجال علم البيانات بيجمع بين البرمجة والإحصاء والفهم التجاري.",
+                def: "علم البيانات هو مجال متعدد التخصصات يستخرج رؤى من البيانات باستخدام الإحصاء والبرمجة والتعلم الآلي.",
+                daily: "المتخصص بيجمع البيانات، بينظفها، بيحللها، بيبني نماذج، وبيقدم تقارير وتوصيات.",
+                jobs: "شركات التقنية، البنوك، شركات التجارة الإلكترونية، والمراكز البحثية.",
+                reqs: ["حاسوب بذاكرة 8GB RAM على الأقل.", "أساسيات الإحصاء والبرمجة.", "مهارات تحليلية."],
+                skills: ["الإحصاء", "البرمجة", "تصور البيانات", "التعلم الآلي", "التواصل"],
+                techs: ["Python", "R", "Pandas", "SQL", "Tableau", "Scikit-learn", "Jupyter"],
+                roadmap: ["Python", "الإحصاء", "تنظيف البيانات", "تحليل البيانات", "التعلم الآلي", "تصور البيانات", "مشاريع"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تحليل بيانات", desc: "تحليل مجموعة بيانات بسيطة باستخدام Pandas." },
+                    { level: "متوسط", badge: "badge-inter", name: "نموذج توقع", desc: "بناء نموذج توقع باستخدام Scikit-learn." },
+                    { level: "متقدم", badge: "badge-adv", name: "مشروع متكامل", desc: "مشروع علم بيانات كامل من الجمع للعرض." }
+                ],
+                ai: "علم البيانات هو الجسر بين البيانات والقرارات، والذكاء الاصطناعي بيعزز قدرات التحليل والتوقع."
+            },
+            computervision: {
+                title: "الرؤية الحاسوبية (Computer Vision)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تخلي الكمبيوتر يشوف ويفهم الصور والفيديوهات، فمجال الرؤية الحاسوبية هو المكان.",
+                def: "الرؤية الحاسوبية هي مجال تعليم الآلات فهم وتحليل الصور والفيديوهات.",
+                daily: "المتخصص بيبني نماذج للتعرف على الأشياء، تحليل الصور، وتتبع الحركة.",
+                jobs: "شركات التقنية، شركات السيارات ذاتية القيادة، المراكز الطبية، وشركات الأمن.",
+                reqs: ["حاسوب قوي أو GPU.", "أساسيات الرياضيات.", "معرفة بالتعلم العميق."],
+                skills: ["معالجة الصور", "التعلم العميق", "الرياضيات", "البرمجة"],
+                techs: ["OpenCV", "TensorFlow", "PyTorch", "Python", "CUDA"],
+                roadmap: ["معالجة الصور", "CNN", "التعرف على الأشياء", "التتبع", "التقسيم", "مشاريع"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "كشف الوجوه", desc: "نموذج لكشف الوجوه في الصور." },
+                    { level: "متوسط", badge: "badge-inter", name: "تصنيف صور", desc: "نموذج CNN لتصنيف الصور." },
+                    { level: "متقدم", badge: "badge-adv", name: "تتبع", desc: "نظام تتبع كائنات في فيديو." }
+                ],
+                ai: "الرؤية الحاسوبية من أسرع مجالات الذكاء الاصطناعي تطورًا، مع تطبيقات في الطب والسيارات والأمن."
+            },
+            nlp: {
+                title: "معالجة اللغة الطبيعية (Natural Language Processing)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تخلي الكمبيوتر يفهم ويتكلم لغات البشر، فمجال معالجة اللغة الطبيعية هو المكان.",
+                def: "معالجة اللغة الطبيعية هي مجال تعليم الآلات فهم النصوص والكلام البشري وتحليلها وتوليدها.",
+                daily: "المتخصص بيبني نماذج لتحليل النصوص، الترجمة، تلخيص المحتوى، والإجابة على الأسئلة.",
+                jobs: "شركات التقنية، شركات الوسائط، البنوك، ومراكز الأبحاث.",
+                reqs: ["حاسوب بذاكرة 16GB RAM (يفضل).", "أساسيات تعلم الآلة.", "معرفة بالنصوص واللغويات."],
+                skills: ["التعلم العميق", "اللغويات", "البرمجة", "تحليل النصوص"],
+                techs: ["Python", "Transformers", "NLTK", "spaCy", "Hugging Face", "BERT"],
+                roadmap: ["معالجة النصوص", "TF-IDF", "Word Embeddings", "RNN", "Transformers", "BERT/GPT", "مشاريع"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "تحليل مشاعر", desc: "نموذج لتحليل مشاعر النصوص." },
+                    { level: "متوسط", badge: "badge-inter", name: "ترجمة", desc: "نموذج ترجمة بسيط." },
+                    { level: "متقدم", badge: "badge-adv", name: "روبوت محادثة", desc: "بناء روبوت محادثة ذكي." }
+                ],
+                ai: "النماذج اللغوية الكبيرة ثوّرت المجال بشكل جذري، والطلب على متخصصين NLP في تزايد مستمر."
+            },
+            genai: {
+                title: "الذكاء الاصطناعي التوليدي (Generative AI)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تكون جزء من الثورة اللي بتغير طريقة إنشاء المحتوى، فمجال الذكاء الاصطناعي التوليدي هو المكان.",
+                def: "الذكاء الاصطناعي التوليدي هو بناء نماذج قادرة على توليد نصوص وصور وفيديوهات وأكواد جديدة.",
+                daily: "المتخصص بيبني ويضبط نماذج توليدية، بيطور تطبيقات تعتمد عليها، وبيقيّم جودتها.",
+                jobs: "شركات التقنية، شركات الإعلام، شركات التسويق، والمراكز البحثية.",
+                reqs: ["حاسوب قوي أو GPU.", "أساسيات تعلم الآلة والتعلم العميق.", "إتقان Python."],
+                skills: ["التعلم العميق", "معالجة اللغة", "الرياضيات", "تقييم النماذج"],
+                techs: ["Python", "PyTorch", "Hugging Face", "LangChain", "Diffusers", "OpenAI API"],
+                roadmap: ["أساسيات التعلم العميق", "Transformers", "نماذج التوليد", "ضبط النماذج", "تطبيقات عملية", "الأخلاقيات"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "توليد نصوص", desc: "استخدام نموذج توليدي لتوليد نصوص." },
+                    { level: "متوسط", badge: "badge-inter", name: "توليد صور", desc: "بناء تطبيق لتوليد الصور." },
+                    { level: "متقدم", badge: "badge-adv", name: "روبوت متكامل", desc: "بناء تطبيق يعتمد على نماذج توليدية متعددة." }
+                ],
+                ai: "الذكاء الاصطناعي التوليدي هو أسرع مجالات AI نموًا، والفرص فيه واسعة لكن المنافسة قوية."
+            },
+            aiengineering: {
+                title: "هندسة الذكاء الاصطناعي (AI Engineering)",
+                category: "الذكاء الاصطناعي",
+                hook: "لو داير تبني أنظمة ذكاء اصطناعي متكاملة وقابلة للتشغيل في الإنتاج، فمجال هندسة الذكاء الاصطناعي هو المسار.",
+                def: "هندسة الذكاء الاصطناعي هي بناء وتشغيل أنظمة AI في بيئات الإنتاج بكفاءة وموثوقية.",
+                daily: "المتخصص بيصمم بنية تحتية للنماذج، بينشرها، بيراقب أداءها، وبيضمن استقرارها.",
+                jobs: "شركات التقنية، البنوك، شركات البرمجيات، ومزودو الخدمات السحابية.",
+                reqs: ["حاسوب قوي.", "معرفة بالتعلم الآلي والعميق.", "مهارات هندسية."],
+                skills: ["التعلم الآلي", "هندسة البرمجيات", "DevOps", "السحابة", "المراقبة"],
+                techs: ["Python", "Docker", "Kubernetes", "MLflow", "TensorFlow Serving", "AWS SageMaker"],
+                roadmap: ["أساسيات ML", "هندسة البرمجيات", "Docker", "MLOps", "النشر", "المراقبة", "التحسين"],
+                projects: [
+                    { level: "مبتدئ", badge: "badge-beginner", name: "نشر نموذج", desc: "نشر نموذج تعلم آلة باستخدام API." },
+                    { level: "متوسط", badge: "badge-inter", name: "خط أنابيب", desc: "بناء خط أنابيب تدريب ونشر آلي." },
+                    { level: "متقدم", badge: "badge-adv", name: "نظام MLOps", desc: "بناء نظام MLOps متكامل." }
+                ],
+                ai: "هندسة الذكاء الاصطناعي هي الجسر بين النماذج والتطبيقات الحقيقية، والطلب عليها بيتزايد مع انتشار AI."
+            }
+        };
+        
+        // Helper: Extract YouTube ID from URL
+        function getYouTubeId(url) {
+            if (!url) return null;
+            // Handle shorts
+            let match = url.match(/shorts\/([a-zA-Z0-9_-]+)/);
+            if (match) return match[1];
+            // Handle youtu.be
+            match = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+            if (match) return match[1];
+            // Handle watch?v=
+            match = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+            if (match) return match[1];
+            return null;
+        }
+        
+        // Helper: Create video embed HTML
+        function createVideoEmbed(video, index) {
+            const id = getYouTubeId(video.url);
+            if (!id) return '';
+            const isVertical = video.type === 'short';
+            const containerClass = isVertical ? 'video-container vertical' : 'video-container horizontal';
+            return `
+                <div style="margin-top: ${index > 0 ? '20px' : '0'};">
+                    <p style="font-weight: 700; color: var(--text-main); margin-bottom: 10px; font-size: 1rem;">${video.title}</p>
+                    <div class="${containerClass}">
+                        <iframe src="https://www.youtube.com/embed/${id}" allowfullscreen 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        </iframe>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Render functions
+        function renderMajors() {
+            const grid = document.getElementById('majorsGrid');
+            grid.innerHTML = '';
+            Object.keys(majors).forEach(id => {
+                const m = majors[id];
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.backgroundImage = `url('${m.image}')`;
+                card.onclick = () => openMajor(id);
+                card.innerHTML = `
+                    <div class="card-content">
+                        <span class="card-badge">${m.code}</span>
+                        <h3>${m.title}</h3>
+                        <p>${m.overview.substring(0, 100)}...</p>
+                        <div class="card-btn">استكشف التخصص ←</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        
+        function renderFields(majorId) {
+            const major = majors[majorId];
+            const grid = document.getElementById('majorFieldsGrid');
+            grid.innerHTML = '';
+            major.fields.forEach(fid => {
+                if (!fields[fid]) return;
+                const f = fields[fid];
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.backgroundImage = `url('${f.image || ''}')`;
+                card.style.minHeight = '260px';
+                card.onclick = () => openField(fid, majorId);
+                card.innerHTML = `
+                    <div class="card-content">
+                        <h3 style="font-size: 1.15rem;">${f.title}</h3>
+                        <p>${f.def.substring(0, 80)}...</p>
+                        <div class="card-btn">عرض التفاصيل ←</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        
+        function openMajor(id) {
+            currentMajorId = id;
+            const m = majors[id];
+            document.getElementById('majorCode').textContent = m.code;
+            document.getElementById('majorTitle').textContent = m.title;
+            document.getElementById('majorFocus').textContent = m.hook;
+            document.getElementById('majorOverview').textContent = m.overview;
+            document.getElementById('majorStudies').textContent = m.studies;
+            document.getElementById('majorCareers').textContent = m.careers;
+            
+            renderFields(id);
+            
+            document.getElementById('homeView').style.display = 'none';
+            document.getElementById('introPage').style.display = 'none';
+            document.getElementById('majorPage').style.display = 'block';
+            document.getElementById('fieldPage').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+        
+        function openField(fid, majorId) {
+            const f = fields[fid];
+            if (!f) return;
+            
+            document.getElementById('fieldCategory').textContent = f.category;
+            document.getElementById('fieldTitle').textContent = f.title;
+            document.getElementById('fieldHook').textContent = f.hook;
+            document.getElementById('fieldDef').textContent = f.def;
+            document.getElementById('fieldDaily').textContent = f.daily;
+            document.getElementById('fieldJobs').textContent = f.jobs;
+            
+            document.getElementById('fieldReqs').innerHTML = f.reqs.map(r => `<li>${r}</li>`).join('');
+            document.getElementById('fieldSkills').innerHTML = f.skills.map(s => `<li>${s}</li>`).join('');
+            document.getElementById('fieldTechs').innerHTML = f.techs.map(t => `<span class="tech-tag">${t}</span>`).join('');
+            
+            document.getElementById('fieldRoadmap').innerHTML = f.roadmap.map((step, i) => {
+                const arrow = i < f.roadmap.length - 1 ? '<span class="roadmap-arrow">←</span>' : '';
+                return `<span class="roadmap-step">${step}</span>${arrow}`;
+            }).join('');
+            
+            document.getElementById('fieldProjects').innerHTML = f.projects.map(p => `
+                <div class="project-card">
+                    <span class="card-badge ${p.badge}" style="margin-bottom: 8px;">${p.level}</span>
+                    <h4 style="font-size: 1.05rem; margin-bottom: 6px;">${p.name}</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">${p.desc}</p>
+                </div>
+            `).join('');
+            
+            document.getElementById('fieldAiText').textContent = f.ai;
+            
+            // Render videos
+            const videoContainer = document.getElementById('fieldVideoContainer');
+            const videoExtra = document.getElementById('fieldVideoExtra');
+            const videos = fieldVideos[fid];
+            
+            if (videos && videos.videos.length > 0) {
+                const firstVideo = videos.videos[0];
+                const id1 = getYouTubeId(firstVideo.url);
+                const isVertical = firstVideo.type === 'short';
+                videoContainer.className = 'video-container ' + (isVertical ? 'vertical' : 'horizontal');
+                videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${id1}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`;
+                
+                if (videos.videos.length > 1) {
+                    videoExtra.innerHTML = videos.videos.slice(1).map((v, i) => createVideoEmbed(v, i)).join('');
+                } else {
+                    videoExtra.innerHTML = '';
+                }
+            } else {
+                videoContainer.className = 'video-container horizontal';
+                videoContainer.innerHTML = '<p style="color: var(--text-muted); padding: 20px; text-align: center;">الفيديو غير متوفر حاليًا</p>';
+                videoExtra.innerHTML = '';
+            }
+            
+            document.getElementById('homeView').style.display = 'none';
+            document.getElementById('introPage').style.display = 'none';
+            document.getElementById('majorPage').style.display = 'none';
+            document.getElementById('fieldPage').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        function goHome() {
+            document.getElementById('homeView').style.display = 'block';
+            document.getElementById('introPage').style.display = 'none';
+            document.getElementById('majorPage').style.display = 'none';
+            document.getElementById('fieldPage').style.display = 'none';
+            document.getElementById('searchResultsSection').style.display = 'none';
+            document.getElementById('mainContentGroup').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        function goBackToMajor() {
+            if (currentMajorId) {
+                openMajor(currentMajorId);
+            } else {
+                goHome();
+            }
+        }
+        
+        function openIntroPage() {
+            document.getElementById('homeView').style.display = 'none';
+            document.getElementById('introPage').style.display = 'block';
+            document.getElementById('majorPage').style.display = 'none';
+            document.getElementById('fieldPage').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+        
+        // Search
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsSection = document.getElementById('searchResultsSection');
+            const resultsGrid = document.getElementById('searchResultsGrid');
+            const mainContent = document.getElementById('mainContentGroup');
+            
+            if (!query) {
+                resultsSection.style.display = 'none';
+                mainContent.style.display = 'block';
+                return;
+            }
+            
+            resultsSection.style.display = 'block';
+            mainContent.style.display = 'none';
+            resultsGrid.innerHTML = '';
+            
+            const results = [];
+            
+            // Search majors
+            Object.keys(majors).forEach(id => {
+                const m = majors[id];
+                const text = `${m.title} ${m.code} ${m.overview} ${m.studies} ${m.careers}`.toLowerCase();
+                if (text.includes(query)) {
+                    results.push({ type: 'major', id, title: m.title, desc: m.overview.substring(0, 80) + '...' });
+                }
+            });
+            
+            // Search fields
+            Object.keys(fields).forEach(id => {
+                const f = fields[id];
+                const text = `${f.title} ${f.category} ${f.def} ${f.skills.join(' ')} ${f.techs.join(' ')}`.toLowerCase();
+                if (text.includes(query)) {
+                    // Find which major contains this field
+                    let parentMajor = null;
+                    Object.keys(majors).forEach(mid => {
+                        if (majors[mid].fields.includes(id)) parentMajor = mid;
+                    });
+                    results.push({ type: 'field', id, title: f.title, desc: f.def.substring(0, 80) + '...', majorId: parentMajor });
+                }
+            });
+            
+            if (results.length === 0) {
+                resultsGrid.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">لا توجد نتائج مطابقة. جرب كلمة أخرى.</p>';
+                return;
+            }
+            
+            results.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.minHeight = '220px';
+                card.style.backgroundImage = 'none';
+                card.style.backgroundColor = 'var(--bg-soft)';
+                card.onclick = () => {
+                    if (r.type === 'major') openMajor(r.id);
+                    else if (r.type === 'field' && r.majorId) openField(r.id, r.majorId);
+                };
+                card.innerHTML = `
+                    <div class="card-content">
+                        <span class="card-badge">${r.type === 'major' ? 'تخصص' : 'مجال'}</span>
+                        <h3 style="font-size: 1.15rem;">${r.title}</h3>
+                        <p>${r.desc}</p>
+                        <div class="card-btn">عرض ←</div>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMajors();
+        });
+    </script>
+</body>
+</html>
